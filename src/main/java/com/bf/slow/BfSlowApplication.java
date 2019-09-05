@@ -17,7 +17,7 @@ public class BfSlowApplication {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Reference(url = "dubbo://127.0.0.1:20880")
-    private UserInfoApi userInfoApi;
+    UserInfoApi userInfoApi;
 
     public static void main(String[] args) {
         SpringApplication.run(BfSlowApplication.class, args);
