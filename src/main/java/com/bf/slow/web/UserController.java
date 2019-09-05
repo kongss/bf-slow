@@ -1,6 +1,11 @@
 package com.bf.slow.web;
 
+import com.bf.slow.api.UserInfoApi;
+import com.bf.slow.common.MessengerVo;
+import com.bf.slow.param.QueryUserParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +28,19 @@ import java.util.stream.IntStream;
 @RestController
 @RequestMapping(value = "/user", produces = {"application/json;charset=UTF-8"})
 public class UserController {
+
+
+    @Reference(url = "dubbo://127.0.0.1:20880")
+    UserInfoApi userInfoApi;
+
+    @GetMapping("/getUser")
+    public MessengerVo getUser(){
+        MessengerVo messenger = userInfoApi.getUser(new QueryUserParam());
+        System.out.println(messenger);
+        return messenger;
+    }
+
+
 
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
