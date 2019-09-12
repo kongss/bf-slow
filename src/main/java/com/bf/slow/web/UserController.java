@@ -1,8 +1,7 @@
 package com.bf.slow.web;
 
 import com.bf.slow.api.UserInfoApi;
-import com.bf.slow.common.MessengerVo;
-import com.bf.slow.param.QueryUserParam;
+import com.bf.slow.common.Messenger;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +33,8 @@ public class UserController {
     UserInfoApi userInfoApi;
 
     @GetMapping("/getUser")
-    public MessengerVo getUser(){
-        MessengerVo messenger = userInfoApi.getUser(new QueryUserParam());
-        System.out.println(messenger);
-        return messenger;
+    public Messenger getUser(){
+        return null;
     }
 
 
